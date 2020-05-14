@@ -10,6 +10,7 @@ import { PlaylistsComponent } from './playlists/playlists.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
+import { MessagesComponent } from './messages/messages.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { InMemoryDataService } from './in-memory-data.service';
     VideosComponent,
     PlaylistFormComponent,
     PlaylistsComponent,
+    MessagesComponent,
   ],
   imports: [
     BrowserModule,
