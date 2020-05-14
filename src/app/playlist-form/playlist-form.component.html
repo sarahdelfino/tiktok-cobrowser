@@ -3,8 +3,7 @@
     <h2>Create a new playlist</h2>
     <form (ngSubmit)="onSubmit()" #playlistForm="ngForm">
       <div class="form-group">
-        <label for="name">Name:</label>
-        <input type="text" class="form-control" id="name"
+        <input type="text" class="form-control" id="name" placeholder="Name"
          required [(ngModel)]="model.name" name="name" #name="ngModel">
         <div [hidden]="name.valid || name.pristine"
          class="alert alert-danger">
@@ -12,8 +11,7 @@
         </div>
       </div>
         <div class="form-group">
-          <label for="url">Url:</label>
-          <input type="text" class="form-control" id="url"
+          <input type="text" class="form-control" id="url" placeholder="URL"
            [(ngModel)]="model.url" name="url" #url="ngModel">
         </div>
         <button type="submit" class="btn btn-success" [disabled]="!playlistForm.form.valid">Submit</button>

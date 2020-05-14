@@ -1,0 +1,15 @@
+<h2>My Playlists</h2>
+<div class="flex-container">
+    <div class="playlistCard" *ngFor="let playlist of playlists">
+        <div class="card-img">
+            <img style="width: 200px;"
+                src="https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded/657671/657671-1550431525076-9abe33e5f998f.jpg">
+        </div>
+        <div class="card-title">
+            <h4>{{playlist.name}}</h4>
+        </div>
+        <div class="card-subtitle">
+            <p>Created by: delf</p>
+        </div>
+    </div>
+</div>

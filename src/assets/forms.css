@@ -1,3 +1,7 @@
+form {
+    width: auto;
+}
+
 .ng-valid[required], .ng-valid.required {
     border-left: 5px solid #42A948;
 }

@@ -5,3 +5,6 @@ button {
     background-color: lightblue;
     color: white;
 }
+.playlistFlex {
+    display: flex;
+}
