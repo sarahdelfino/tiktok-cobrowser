@@ -1,15 +1,21 @@
 import { Injectable } from '@angular/core';
 import { Playlist } from './playlist';
-import { PLAYLISTS } from './mock-playlist';
+import { Observable, of } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PlaylistService {
 
-  constructor() { }
+  constructor(
+    private http: HttpClient
+  ) { }
 
-  getPlaylists(): Playlist[] {
-    return PLAYLISTS;
+  private playlistsUrl = 'api/playlists'; //URL to web api
+
+  // GET playlists from the server
+  getPlaylists(): Observable<Playlist[]> {
+    return this.http.get<Playlist[]>(this.playlistsUrl)
   }
 }

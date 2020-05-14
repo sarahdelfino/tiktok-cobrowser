@@ -14,7 +14,8 @@ export class PlaylistsComponent implements OnInit {
   constructor(private playlistService: PlaylistService) { }
 
   getPlaylists(): void {
-    this.playlists = this.playlistService.getPlaylists();
+    this.playlistService.getPlaylists()
+    .subscribe(playlists => this.playlists = playlists);
   }
 
   ngOnInit() {
