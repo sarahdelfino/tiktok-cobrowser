@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { PLAYLISTS } from '../mock-playlist';
+import { PlaylistService } from '../playlist.service';
+import { Playlist } from '../playlist';
 
 @Component({
   selector: 'app-playlists',
@@ -8,11 +9,16 @@ import { PLAYLISTS } from '../mock-playlist';
 })
 export class PlaylistsComponent implements OnInit {
 
-  playlists = PLAYLISTS;
+  playlists: Playlist[];
 
-  constructor() { }
+  constructor(private playlistService: PlaylistService) { }
+
+  getPlaylists(): void {
+    this.playlists = this.playlistService.getPlaylists();
+  }
 
   ngOnInit() {
+    this.getPlaylists();
   }
 
 }
