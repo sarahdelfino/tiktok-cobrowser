@@ -1,3 +1,7 @@
-export interface Video {
+export class Video {
+
+    constructor(
+        public url: String[],
+    ) { }
     
 }
