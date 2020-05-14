@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Video } from '../video';
+import { Playlist } from '../playlist';
 
 @Component({
   selector: 'app-playlist-form',
@@ -8,18 +8,16 @@ import { Video } from '../video';
 })
 export class PlaylistFormComponent {
 
-  urls = ['https://www.tiktok.com/oembed?url=https://www.tiktok.com/@scout2015/video/6718335390845095173'
-  ,'https://www.tiktok.com/oembed?url=https://www.tiktok.com/@oakleythegoldenpuppy/video/6816357733827218693'
-  ,
-];
-
-model = new Video(1, this.urls[0]);
+model = new Playlist('test playlist', 'https://www.tiktok.com/oembed?url=https://www.tiktok.com/@scout2015/video/6718335390845095173');
 
 submitted = false;
 
 onSubmit() { this.submitted = true; }
 
-get diagnostic() { return JSON.stringify(this.model); }
+newPlaylist() {
+  this.model = new Playlist('', '');
+}
+
 
   // constructor() { }
 

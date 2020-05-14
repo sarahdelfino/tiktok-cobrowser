@@ -1,20 +1,37 @@
 <div class="container">
+  <div [hidden]="submitted">
     <h2>Create a new playlist</h2>
-    <form #playlistForm="ngForm">
-
+    <form (ngSubmit)="onSubmit()" #playlistForm="ngForm">
       <div class="form-group">
-        <label for="url">URL:</label>
-        <input type="text" class="form-control" id="url" required
-        [(ngModel)]="model.url" name="url">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" id="name"
+         required [(ngModel)]="model.name" name="name" #name="ngModel">
+        <div [hidden]="name.valid || name.pristine"
+         class="alert alert-danger">
+          Playlist name is required
+        </div>
       </div>
-      <div class="form-group">
-        <label for="url">Hero Power</label>
-        <select class="form-control" id="url" required>
-          <option *ngFor="let url of urls" [value]="url">{{url}}</option>
-        </select>
-      </div>
-
-      <button type="submit" class="btn btn-success">Submit</button>
-
+        <div class="form-group">
+          <label for="url">Url:</label>
+          <input type="text" class="form-control" id="url"
+           [(ngModel)]="model.url" name="url" #url="ngModel">
+        </div>
+        <button type="submit" class="btn btn-success" [disabled]="!playlistForm.form.valid">Submit</button>
+        <button type="button" class="btn btn-default" (click)="newPlaylist(); playlistForm.reset()">New
+          Playlist</button>
     </form>
+  </div>
+  
+  <div [hidden]="!submitted">
+    <h2>You submitted the following:</h2>
+    <div class="row">
+      <div class="col-xs-3">Name:</div>
+      <div class="col-xs-9">{{ model.name }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">Url:</div>
+      <div class="col-xs-9">{{ model.url }}</div>
+    </div>
+    <button class="btn btn-primary" (click)="submitted=false">Ok</button>
+  </div>
 </div>
