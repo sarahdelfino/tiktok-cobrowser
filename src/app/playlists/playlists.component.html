@@ -1,6 +1,10 @@
-<h2>My Playlists</h2>
+<div>
+    <h2>My Playlists</h2>
+    <input #playlistName placeholder="Playlist Name" />
+    <button (click)="add(playlistName.value); playlistName.value=''">New Playlist</button>
+</div>
 <div class="flex-container">
-    <div class="playlistCard" *ngFor="let playlist of playlists">
+    <div class="playlistCard" *ngFor="let playlist of playlists.slice().reverse()">
         <div class="card-img">
             <img style="width: 200px;"
                 src="https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded/657671/657671-1550431525076-9abe33e5f998f.jpg">
@@ -11,5 +15,6 @@
         <div class="card-subtitle">
             <p>Created by: delf</p>
         </div>
+        <button class="delete" title="delete playlist" (click)="delete(playlist)">Delete Playlist</button>
     </div>
 </div>

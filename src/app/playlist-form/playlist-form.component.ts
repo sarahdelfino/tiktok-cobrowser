@@ -1,28 +1,44 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
 import { Playlist } from '../playlist';
+import { PlaylistService } from '../playlist.service';
+import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-playlist-form',
   templateUrl: './playlist-form.component.html',
   styleUrls: ['./playlist-form.component.css']
 })
-export class PlaylistFormComponent {
+export class PlaylistFormComponent implements OnInit {
 
-model = new Playlist(1, 'test playlist', 'https://www.tiktok.com/oembed?url=https://www.tiktok.com/@scout2015/video/6718335390845095173');
+  playlists: Playlist[];
 
-submitted = false;
+  constructor(private playlistService: PlaylistService) { }
 
-onSubmit() { this.submitted = true; }
+  ngOnInit() {
+    this.getPlaylists();
+  }
 
-newPlaylist(): void {
-  this.playlistService.addPlaylist(this.playlist)
-  .subscribe(() => this.goBack());
-}
+  getPlaylists(): void {
+    this.playlistService.getPlaylists()
+    .subscribe(playlists => this.playlists = playlists);
+  }
 
+  add(name: string): void {
+    name = name.trim();
+    if (!name) { return; }
+    this.playlistService.addPlaylist({ name } as Playlist)
+      .subscribe(playlist => {
+        this.playlists.push(playlist);
+        console.log("PFORM - Added playlist: " + { Playlist });
+        console.log("PFORM - Added name: " + { name });
+      });
+    }
 
-  // constructor() { }
+  model = new Playlist(1, 'test playlist', 'https://www.tiktok.com/oembed?url=https://www.tiktok.com/@scout2015/video/6718335390845095173');
 
-  // ngOnInit() {
-  // }
+  submitted = false;
+
+  onSubmit() { this.submitted = true; }
 
 }

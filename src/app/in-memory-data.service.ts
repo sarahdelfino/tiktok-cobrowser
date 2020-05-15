@@ -17,6 +17,11 @@ export class InMemoryDataService implements InMemoryDbService {
     return {playlists};
   }
 
+  // overrides the genId method to ensure tat a hero always has an id
+  // if the heroes array is empty,
+  // the method below returns the initial number (11)
+  // if the heroes array is not empty, the method below returns the highest
+  // hero id + 1
   genId(playlists: Playlist[]): number {
     return playlists.length > 0 ? Math.max(...playlists.map(playlist =>
       playlist.id)) + 1 : 11;
