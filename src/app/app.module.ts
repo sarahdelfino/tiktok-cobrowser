@@ -9,6 +9,11 @@ import { AppComponent } from './app.component';
 import { VideosComponent } from './videos/videos.component';
 import { PlaylistFormComponent } from './playlist-form/playlist-form.component';
 import { PlaylistsComponent } from './playlists/playlists.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule } from '@angular/material/button';
+import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
+
 
 
 import { MessagesComponent } from './messages/messages.component';
@@ -20,10 +25,14 @@ import { MessagesComponent } from './messages/messages.component';
     PlaylistFormComponent,
     PlaylistsComponent,
     MessagesComponent,
+    ConfirmationDialogComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
+    MatButtonModule,
     HttpClientModule,
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
 // and returns simulated server responses.
@@ -31,6 +40,9 @@ import { MessagesComponent } from './messages/messages.component';
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false }
     ),
+  ],
+  entryComponents: [
+    ConfirmationDialogComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,7 +1,7 @@
 <div>
-    <h2>My Playlists</h2>
+<h2>My Playlists</h2>
     <input #playlistName placeholder="Playlist Name" />
-    <button (click)="add(playlistName.value); playlistName.value=''">New Playlist</button>
+    <button (ngSubmit)="onSubmit()" (click)="add(playlistName.value); playlistName.value=''">New Playlist</button>
 </div>
 <div class="flex-container">
     <div class="playlistCard" *ngFor="let playlist of playlists.slice().reverse()">
@@ -13,8 +13,11 @@
             <h4>{{playlist.name}}</h4>
         </div>
         <div class="card-subtitle">
+            <h4>{{playlist.url}}</h4>
+        </div>
+        <div class="card-subtitle">
             <p>Created by: delf</p>
         </div>
-        <button class="delete" title="delete playlist" (click)="delete(playlist)">Delete Playlist</button>
+        <button mat-button (click)="openDialog()">Delete Playlist</button>
     </div>
 </div>

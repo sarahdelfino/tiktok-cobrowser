@@ -3,6 +3,9 @@ import { Playlist } from '../playlist';
 import { PlaylistService } from '../playlist.service';
 import { MessageService } from '../message.service';
 import { Observable } from 'rxjs';
+import { MatDialog } from '@angular/material';
+import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
+
 
 @Component({
   selector: 'app-playlists',
@@ -15,14 +18,19 @@ export class PlaylistsComponent implements OnInit {
 
   playlists: Playlist[];
 
+  submitted = false;
+
   constructor(
     private playlistService: PlaylistService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    public dialog: MatDialog
     ) { }
 
   ngOnInit() {
     this.getPlaylists();
   }
+
+  onSubmit() { this.submitted = true; }
 
   onSelect(playlist: Playlist): void {
     this.selectedPlaylist = playlist;
@@ -33,7 +41,23 @@ export class PlaylistsComponent implements OnInit {
     this.playlistService.getPlaylists()
     .subscribe(playlists => this.playlists = playlists);
   }
-  
+
+  openDialog(): void {
+    const dialogRef =
+    this.dialog.open(ConfirmationDialogComponent, {
+      width: '350px',
+      // TODO: pass playlist object to display
+      // name and finish delete confirmation
+      data: this.playlists.toString
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result) {
+        console.log('Yes clicked');
+        // do something
+      }
+    });
+  }
 
   add(name: string): void {
     name = name.trim();
