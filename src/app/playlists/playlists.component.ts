@@ -33,4 +33,13 @@ export class PlaylistsComponent implements OnInit {
     .subscribe(playlists => this.playlists = playlists);
   }
 
+  addPlaylist(name: string): void {
+    name = name.trim();
+    if (!name) { return ; }
+    this.playlistService.addPlaylist({ name } as Playlist)
+    .subscribe(playlist => {
+      this.playlists.push(playlist);
+    })
+  }
+
 }

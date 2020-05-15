@@ -8,14 +8,15 @@ import { Playlist } from '../playlist';
 })
 export class PlaylistFormComponent {
 
-model = new Playlist('test playlist', 'https://www.tiktok.com/oembed?url=https://www.tiktok.com/@scout2015/video/6718335390845095173');
+model = new Playlist(1, 'test playlist', 'https://www.tiktok.com/oembed?url=https://www.tiktok.com/@scout2015/video/6718335390845095173');
 
 submitted = false;
 
 onSubmit() { this.submitted = true; }
 
-newPlaylist() {
-  this.model = new Playlist('', '');
+newPlaylist(): void {
+  this.playlistService.addPlaylist(this.playlist)
+  .subscribe(() => this.goBack());
 }
 
 

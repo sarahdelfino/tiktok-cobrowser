@@ -4,19 +4,14 @@
     <form (ngSubmit)="onSubmit()" #playlistForm="ngForm">
       <div class="form-group">
         <input type="text" class="form-control" id="name" placeholder="Name"
-         required [(ngModel)]="model.name" name="name" #name="ngModel">
-        <div [hidden]="name.valid || name.pristine"
-         class="alert alert-danger">
-          Playlist name is required
-        </div>
+         required [(ngModel)]="model.name" name="name" #playlistName>
       </div>
         <div class="form-group">
           <input type="text" class="form-control" id="url" placeholder="URL"
-           [(ngModel)]="model.url" name="url" #url="ngModel">
+           [(ngModel)]="model.url" name="url" #playlistUrl>
         </div>
         <button type="submit" class="btn btn-success" [disabled]="!playlistForm.form.valid">Submit</button>
-        <button type="button" class="btn btn-default" (click)="newPlaylist(); playlistForm.reset()">New
-          Playlist</button>
+        <button type="button" class="btn btn-default" (click)="addPlaylist(playlistName.value); playlistName.value=''">New Playlist</button>
     </form>
   </div>
   
