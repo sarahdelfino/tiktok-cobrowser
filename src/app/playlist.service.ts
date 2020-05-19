@@ -63,7 +63,6 @@ getPlaylist(id: number): Observable<Playlist> {
 
   // add new playlist to the server
   addPlaylist(playlist: Playlist): Observable<Playlist> {
-    console.log("PlaylistService: " + playlist.name);
     return this.http.post<Playlist>(this.playlistsUrl, playlist,
       this.httpOptions).pipe(
         tap((newPlaylist: Playlist) => this.log('added playlist with id=${newPlaylist.id}')),
@@ -83,8 +82,10 @@ getPlaylist(id: number): Observable<Playlist> {
   deletePlaylist(playlist: Playlist | number): Observable<Playlist> {
     const id = typeof playlist === 'number' ? playlist : playlist.id;
     const url = '${this.playlistsUrl}/${id}';
+    console.log(this.playlistsUrl);
 
-    return this.http.delete<Playlist>(url, this.httpOptions).pipe(
+    return this.http.delete<Playlist>(url, 
+      this.httpOptions).pipe(
       tap(_ => this.log('deleted playlist id=${id}')),
       catchError(this.handleError<Playlist>('deletePlaylist'))
     );
