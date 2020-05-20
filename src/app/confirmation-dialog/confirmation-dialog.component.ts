@@ -3,7 +3,6 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { PlaylistService } from '../playlist.service';
 import { Playlist } from '../playlist';
 
-
 @Component({
   selector: 'app-confirmation-dialog',
   templateUrl: './confirmation-dialog.component.html',
@@ -11,12 +10,14 @@ import { Playlist } from '../playlist';
 })
 export class ConfirmationDialogComponent {
 
+
+
   playlists: Playlist[];
 
   constructor(
     public dialogRef:
     MatDialogRef<ConfirmationDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public message: any,
+    @Inject(MAT_DIALOG_DATA) public message: string,
 
     private playlistService: PlaylistService
   ) { }
