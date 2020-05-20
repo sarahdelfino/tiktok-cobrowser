@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Playlist } from '../playlist';
 import { PlaylistService } from '../playlist.service';
 import { MessageService } from '../message.service';
-import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material';
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 
@@ -45,7 +44,7 @@ export class PlaylistsComponent implements OnInit {
     .subscribe(playlists => this.playlists = playlists);
   }
 
-  openDialog(): void {
+  openDelete(): void {
     const dialogRef =
     this.dialog.open(ConfirmationDialogComponent, {
       width: '350px',

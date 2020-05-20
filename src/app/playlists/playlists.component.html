@@ -12,12 +12,13 @@
         <div class="card-title">
             <h4>{{playlist.name}}</h4>
         </div>
-        <div class="card-subtitle">
-            <h4>{{playlist.url}}</h4>
-        </div>
+        <!-- <div class="card-subtitle">
+            <p>{{playlist.url}}</p>
+        </div> -->
         <div class="card-subtitle">
             <p>Created by: delf</p>
         </div>
-        <button mat-button (click)="openDialog()">Delete Playlist</button>
+        <button mat-button (click)="openDelete()">Delete Playlist</button>
     </div>
 </div>
+<!-- <app-videos [playlist]="selectedPlaylist"></app-videos> -->

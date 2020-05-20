@@ -52,15 +52,6 @@ getPlaylist(id: number): Observable<Playlist> {
   );
 }
 
-  // GET playlists from the server
-  // getPlaylists(): Observable<Playlist[]> {
-  //   return this.http.get<Playlist[]>(this.playlistsUrl)
-  //   .pipe(
-  //     tap(_ => this.log('fetched playlists')),
-  //     catchError(this.handleError<Playlist[]>('getPlaylist', []))
-  //   );
-  // }
-
   // add new playlist to the server
   addPlaylist(playlist: Playlist): Observable<Playlist> {
     return this.http.post<Playlist>(this.playlistsUrl, playlist,
