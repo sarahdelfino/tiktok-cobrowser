@@ -17,7 +17,7 @@ export class ConfirmationDialogComponent {
   constructor(
     public dialogRef:
     MatDialogRef<ConfirmationDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public message: string,
+    @Inject(MAT_DIALOG_DATA) public message: any,
 
     private playlistService: PlaylistService
   ) { }
