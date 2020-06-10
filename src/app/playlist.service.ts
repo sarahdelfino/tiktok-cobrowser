@@ -12,7 +12,9 @@ import { MessageService } from './message.service';
 })
 export class PlaylistService {
 
-  private playlistsUrl = 'api/playlists'; //URL to web api
+  public playlistsUrl = 'api/playlists'; //URL to web api
+
+  
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json'})
@@ -57,7 +59,7 @@ getPlaylist(id: number): Observable<Playlist> {
     console.log("PlaylistService: " + playlist.name);
     return this.http.post<Playlist>(this.playlistsUrl, playlist,
       this.httpOptions).pipe(
-        tap((newPlaylist: Playlist) => this.log('added playlist with id=${newPlaylist.id}')),
+        tap((newPlaylist: Playlist) => console.log('added playlist with id=${newPlaylist.id}')),
         catchError(this.handleError<Playlist>('addPlaylist'))
       );
   }
@@ -75,8 +77,14 @@ getPlaylist(id: number): Observable<Playlist> {
     const id = typeof playlist === 'number' ? playlist : playlist.id;
     const url = '${this.playlistsUrl}/${id}';
 
+<<<<<<< HEAD
     return this.http.delete<Playlist>(url, this.httpOptions).pipe(
       tap(_ => this.log('deleted playlist id=${id}')),
+=======
+    return this.http.delete<Playlist>(url,
+      this.httpOptions).pipe(
+      tap(_ => console.log('deleted playlist id=${id}')),
+>>>>>>> fcde06c... removed interceptor & api call set up
       catchError(this.handleError<Playlist>('deletePlaylist'))
     );
   }
