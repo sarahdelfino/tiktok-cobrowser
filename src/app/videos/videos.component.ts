@@ -23,8 +23,8 @@ export class VideosComponent implements OnInit {
       next: video => this.video = video,
       error: err => console.log(err),
     });
-    this.sanitizer.bypassSecurityTrustHtml(this.video.html);
-    // this.sanitizer.bypassSecurityTrustScript(this.video.html);
+    // this.sanitizer.bypassSecurityTrustHtml(this.video.html);
+    this.sanitizer.bypassSecurityTrustScript(this.video.html);
   }
 
   ngOnInit() {
