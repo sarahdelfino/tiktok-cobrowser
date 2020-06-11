@@ -77,14 +77,9 @@ getPlaylist(id: number): Observable<Playlist> {
     const id = typeof playlist === 'number' ? playlist : playlist.id;
     const url = '${this.playlistsUrl}/${id}';
 
-<<<<<<< HEAD
-    return this.http.delete<Playlist>(url, this.httpOptions).pipe(
-      tap(_ => this.log('deleted playlist id=${id}')),
-=======
     return this.http.delete<Playlist>(url,
       this.httpOptions).pipe(
       tap(_ => console.log('deleted playlist id=${id}')),
->>>>>>> fcde06c... removed interceptor & api call set up
       catchError(this.handleError<Playlist>('deletePlaylist'))
     );
   }
