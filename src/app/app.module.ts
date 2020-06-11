@@ -7,7 +7,6 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
 import { AppComponent } from './app.component';
 import { VideosComponent } from './videos/videos.component';
-import { PlaylistFormComponent } from './playlist-form/playlist-form.component';
 import { PlaylistsComponent } from './playlists/playlists.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -21,7 +20,6 @@ import { MessagesComponent } from './messages/messages.component';
   declarations: [
     AppComponent,
     VideosComponent,
-    PlaylistFormComponent,
     PlaylistsComponent,
     MessagesComponent,
     ConfirmationDialogComponent

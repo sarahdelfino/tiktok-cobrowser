@@ -34,6 +34,7 @@ getPlaylists(): Observable<Playlist[]> {
   );
 }
 
+// GET playlist by id Return 'undefined' when not found
 getPlaylistNo404<Data>(id: number): Observable<Playlist> {
   const url = '${this.playlistsUrl}/?id=${id}';
   return this.http.get<Playlist[]>(url)
@@ -47,10 +48,12 @@ getPlaylistNo404<Data>(id: number): Observable<Playlist> {
   );
 }
 
+// GET playlist by id. will 404 if not found
 getPlaylist(id: number): Observable<Playlist> {
   const url = '${this.playlistsUrl}/${id}';
   return this.http.get<Playlist>(url).pipe(
-    tap(_ => this.log('fetched playlist id=${id}'))
+    tap(_ => this.log('fetched playlist id=${id}')),
+    catchError(this.handleError<Playlist>('getPlaylist id=${id}'))
   );
 }
 

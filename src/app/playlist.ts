@@ -5,8 +5,7 @@ export class Playlist {
     constructor(
         public id: number,
         public name: string,
-        public video: Video,
-        public url?: string[],
+        public url?: string,
     ) { }
     
 }

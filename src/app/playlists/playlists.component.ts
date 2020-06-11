@@ -20,9 +20,10 @@ export class PlaylistsComponent implements OnInit {
   submitted = false;
 
   constructor(
+    public dialog: MatDialog,
+
     private playlistService: PlaylistService,
     private messageService: MessageService,
-    private dialog: MatDialog,
   ) { }
 
   ngOnInit() {
@@ -59,7 +60,6 @@ export class PlaylistsComponent implements OnInit {
         console.log('Yes clicked', this.selectedPlaylist.id);
         // this.playlistService.deletePlaylist(this.selectedPlaylist.id);
         this.delete(this.selectedPlaylist);
-        
       }
     });
   }
@@ -76,7 +76,7 @@ export class PlaylistsComponent implements OnInit {
   delete(playlist: Playlist): void {
     console.log("deleting from playlists component");
     this.playlists = this.playlists.filter(p => p !== playlist);
-    this.playlistService.deletePlaylist(this.selectedPlaylist.id).subscribe();
+    this.playlistService.deletePlaylist(playlist.id).subscribe();
   }
 
 }
