@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
@@ -12,6 +12,11 @@ import { MessageService } from './message.service';
 })
 export class PlaylistService {
 
+  constructor(
+    private http: HttpClient,
+    private messageService: MessageService
+  ) { }
+
   public playlistsUrl = 'api/playlists'; //URL to web api
 
   
@@ -20,12 +25,13 @@ export class PlaylistService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json'})
   };
 
-  constructor(
-    private http: HttpClient,
-    private messageService: MessageService
-  ) { }
+  getPlaylistTest(): Observable<Playlist> {
+    return this.http.get<Playlist>("api/playlists");
+  }
 
+  
     /** GET playlists..by id wasnt working */
+    /*
 getPlaylists(): Observable<Playlist[]> {
   return this.http.get<Playlist[]>(this.playlistsUrl)
   .pipe(
@@ -110,5 +116,5 @@ getPlaylist(id: number): Observable<Playlist> {
   private log(message: string) {
     this.messageService.add('PlaylistService: ${message}');
   }
-
+*/
 }

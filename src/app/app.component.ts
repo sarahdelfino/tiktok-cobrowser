@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { MatDialog } from '@angular/material';
-import { VideoService } from './video.service';
+import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-root',
@@ -9,6 +9,9 @@ import { VideoService } from './video.service';
 })
 export class AppComponent {
   title = 'tiktok-cobrowser';
+  
+
+  constructor(private http: HttpClient) {}
 
 
 

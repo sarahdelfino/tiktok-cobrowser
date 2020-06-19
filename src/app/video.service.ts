@@ -2,18 +2,28 @@ import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient, HttpParams, HttpBackend } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Video } from './video';
+import { PlaylistService } from './playlist.service';
+import { Playlist } from './playlist';
+import { Observable } from 'rxjs';
 
 const baseUrl = 'https://www.tiktok.com/oembed?url=https://www.tiktok.com/@scout2015/video/6718335390845095173';
+
+// const baseUrl = 'https://www.tiktok.com/oembed?url=';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class VideoService {
   
-  constructor(private httpClient: HttpClient) {}
+  constructor(private http: HttpClient,) {}
 
-  getVideo() {
-    return this.httpClient.get(baseUrl);
+    // playlistUrl = this.playlist.url;
+
+    // url = baseUrl + this.playlistUrl;
+
+  getVideo(): Observable<Video> {
+    return this.http.get<Video>(baseUrl);
   }
   
   

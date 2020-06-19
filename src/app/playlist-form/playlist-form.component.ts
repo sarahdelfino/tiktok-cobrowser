@@ -35,10 +35,8 @@ export class PlaylistFormComponent implements OnInit {
       });
     }
 
-  model = new Playlist(1, 'test playlist', 'https://www.tiktok.com/oembed?url=https://www.tiktok.com/@scout2015/video/6718335390845095173');
-
   submitted = false;
-
+ 
   onSubmit() { this.submitted = true; }
 
 }

@@ -1,38 +1,56 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Playlist } from '../playlist';
 import { PlaylistService } from '../playlist.service';
 import { MessageService } from '../message.service';
 import { MatDialog } from '@angular/material';
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
-
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { VideoService } from '../video.service';
 
 @Component({
   selector: 'app-playlists',
   templateUrl: './playlists.component.html',
   styleUrls: ['./playlists.component.css']
 })
+
 export class PlaylistsComponent implements OnInit {
 
-  selectedPlaylist: Playlist;
+  // playlists$: Observable<any> = this.http.get('/api/playlists');
 
-  playlists: Playlist[];
+  // selectedPlaylist: Playlist;
 
-  submitted = false;
+  // playlists: Playlist[];
+
+  playlists: any = [];
+
+  // submitted = false;
 
   constructor(
     public dialog: MatDialog,
 
     private playlistService: PlaylistService,
     private messageService: MessageService,
+    private http: HttpClient,
   ) { }
+
+  // onSubmit() { this.submitted = true; }
+
+
+  getPlaylists() {
+    this.playlistService.getPlaylistTest()
+    .subscribe({
+      next: playlists => this.playlists = playlists,
+      // next: playlists => console.log(playlists[1].video),
+      error: err => console.log(err),
+    });
+  }
 
   ngOnInit() {
     this.getPlaylists();
   }
 
-  onSubmit() { this.submitted = true; }
-
-  onSelect(playlist: Playlist): void {
+  /*onSelect(playlist: Playlist): void {
     this.selectedPlaylist = playlist;
     console.log(this.selectedPlaylist.name);
     this.messageService.add('PlaylistService: Selected playlist id=${playlist.id}');
@@ -44,6 +62,8 @@ export class PlaylistsComponent implements OnInit {
     this.playlistService.getPlaylists()
       .subscribe(playlists => this.playlists = playlists);
   }
+
+
 
   openDelete(): void {
     const dialogRef =
@@ -78,5 +98,5 @@ export class PlaylistsComponent implements OnInit {
     this.playlists = this.playlists.filter(p => p !== playlist);
     this.playlistService.deletePlaylist(playlist.id).subscribe();
   }
-
+*/
 }

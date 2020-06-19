@@ -1,24 +1,26 @@
-<div>
-<h2>My Playlists</h2>
+<!-- <div>
+    <h2>My Playlists</h2>
     <input #playlistName placeholder="Playlist Name" />
     <button (ngSubmit)="onSubmit()" (click)="add(playlistName.value); playlistName.value=''">New Playlist</button>
-</div>
+</div> -->
 <div class="flex-container">
-    <div class="playlistCard" *ngFor="let playlist of playlists.slice().reverse()" (click)="onSelect(playlist);">
+    <!-- <div class="playlistCard" *ngFor="let playlist of playlists.slice().reverse()" (click)="onSelect(playlist);"> -->
+    <div class="playlistCard">
         <div class="card-img">
             <img style="width: 200px;"
                 src="https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded/657671/657671-1550431525076-9abe33e5f998f.jpg">
         </div>
         <div class="card-title">
-            <h4>{{playlist.name}}</h4>
+            <h4>{{playlists[1].name}}</h4>
         </div>
-        <!-- <div class="card-subtitle">
-            <p>{{playlist.url}}</p>
-        </div> -->
+        <div class="card-subtitle">
+            <p>playlists</p>
+            <p>{{playlists[1].id}}</p>
+        </div>
         <div class="card-subtitle">
             <p>Created by: delf</p>
         </div>
-        <button mat-button (click)="openDelete()">Delete Playlist</button>
+        <!-- <button mat-button (click)="openelete()">Delete Playlist</button> -->
     </div>
 </div>
 <!-- <app-videos [playlist]="selectedPlaylist"></app-videos> -->
