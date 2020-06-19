@@ -7,13 +7,12 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
 import { AppComponent } from './app.component';
 import { VideosComponent } from './videos/videos.component';
-import { PlaylistFormComponent } from './playlist-form/playlist-form.component';
 import { PlaylistsComponent } from './playlists/playlists.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
-
+import { Playlist } from './playlist';
 
 import { MessagesComponent } from './messages/messages.component';
 
@@ -21,7 +20,6 @@ import { MessagesComponent } from './messages/messages.component';
   declarations: [
     AppComponent,
     VideosComponent,
-    PlaylistFormComponent,
     PlaylistsComponent,
     MessagesComponent,
     ConfirmationDialogComponent
@@ -32,13 +30,7 @@ import { MessagesComponent } from './messages/messages.component';
     BrowserAnimationsModule,
     MatDialogModule,
     MatButtonModule,
-    HttpClientModule,
-    // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
-// and returns simulated server responses.
-// Remove it when a real server is ready to receive requests.
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false }
-    ),
+    HttpClientModule
   ],
   entryComponents: [
     ConfirmationDialogComponent

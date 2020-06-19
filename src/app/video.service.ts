@@ -1,29 +1,35 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient, HttpParams, HttpBackend } from '@angular/common/http';
-import { Observable, throwError, of, BehaviorSubject } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
+import { Video } from './video';
+import { PlaylistService } from './playlist.service';
+import { Playlist } from './playlist';
+import { Observable } from 'rxjs';
 
-export interface Video {
-  version: string,
-  type: string,
-  title: string,
-  author_url:  string,
-  author_name:  string,
-  width:  string,
-  height:  string,
-  html:  string,
-  thumbnail_width: string,
-  thumbnail_height: string,
-  thumbnail_url:  string,
-  provider_url: string,
-  provider_name: string,
-}
+const baseUrl = 'https://www.tiktok.com/oembed?url=https://www.tiktok.com/@scout2015/video/6718335390845095173';
+
+// const baseUrl = 'https://www.tiktok.com/oembed?url=';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class VideoService {
-  private httpWithoutInterceptor: HttpClient;
+  
+  constructor(private http: HttpClient,) {}
+
+    // playlistUrl = this.playlist.url;
+
+    // url = baseUrl + this.playlistUrl;
+
+  getVideo(): Observable<Video> {
+    return this.http.get<Video>(baseUrl);
+  }
+  
+  
+}  
+  
+  /*private httpWithoutInterceptor: HttpClient;
   private _videos = new BehaviorSubject<Video[]>([]);
   private baseUrl = 'https://tiktok.com/oembed?url=';
   private dataStore: { videos: Video[] } = { videos: [] };
@@ -47,26 +53,9 @@ export class VideoService {
     );
   }
   
+  constructor(private httpClient: HttpClient) {}
 
-  get videos() {
-    return this._videos.asObservable();
-  }
-
-
-
-  // private formatErrors(error: any) {
-  //   return throwError(error.error);
-  // }
-
-  // get(path: string, params: HttpParams = new HttpParams()): Observable<any> {
-  //   return this.http.get(`${path}`, { params })
-  //   .pipe(catchError(this.formatErrors));
-  // }
-
-  // _get(path: string, params: HttpParams = new HttpParams()): Observable<any> {
-  //   return this.httpWithoutInterceptor.get(`${path}`, { params })
-  //     .pipe(catchError(this.formatErrors));
-  // }
-
-
-}
+  getVideo() {
+    return this.httpClient.get<Video>(baseUrl)
+  };
+}*/

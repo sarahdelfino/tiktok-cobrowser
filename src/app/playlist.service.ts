@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
@@ -12,18 +12,26 @@ import { MessageService } from './message.service';
 })
 export class PlaylistService {
 
-  private playlistsUrl = 'api/playlists'; //URL to web api
-
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json'})
-  };
-
   constructor(
     private http: HttpClient,
     private messageService: MessageService
   ) { }
 
+  public playlistsUrl = 'api/playlists'; //URL to web api
+
+  
+
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json'})
+  };
+
+  getPlaylistTest(): Observable<Playlist> {
+    return this.http.get<Playlist>("api/playlists");
+  }
+
+  
     /** GET playlists..by id wasnt working */
+    /*
 getPlaylists(): Observable<Playlist[]> {
   return this.http.get<Playlist[]>(this.playlistsUrl)
   .pipe(
@@ -32,6 +40,7 @@ getPlaylists(): Observable<Playlist[]> {
   );
 }
 
+// GET playlist by id Return 'undefined' when not found
 getPlaylistNo404<Data>(id: number): Observable<Playlist> {
   const url = '${this.playlistsUrl}/?id=${id}';
   return this.http.get<Playlist[]>(url)
@@ -45,10 +54,12 @@ getPlaylistNo404<Data>(id: number): Observable<Playlist> {
   );
 }
 
+// GET playlist by id. will 404 if not found
 getPlaylist(id: number): Observable<Playlist> {
   const url = '${this.playlistsUrl}/${id}';
   return this.http.get<Playlist>(url).pipe(
-    tap(_ => this.log('fetched playlist id=${id}'))
+    tap(_ => this.log('fetched playlist id=${id}')),
+    catchError(this.handleError<Playlist>('getPlaylist id=${id}'))
   );
 }
 
@@ -57,7 +68,7 @@ getPlaylist(id: number): Observable<Playlist> {
     console.log("PlaylistService: " + playlist.name);
     return this.http.post<Playlist>(this.playlistsUrl, playlist,
       this.httpOptions).pipe(
-        tap((newPlaylist: Playlist) => this.log('added playlist with id=${newPlaylist.id}')),
+        tap((newPlaylist: Playlist) => console.log('added playlist with id=${newPlaylist.id}')),
         catchError(this.handleError<Playlist>('addPlaylist'))
       );
   }
@@ -75,8 +86,9 @@ getPlaylist(id: number): Observable<Playlist> {
     const id = typeof playlist === 'number' ? playlist : playlist.id;
     const url = '${this.playlistsUrl}/${id}';
 
-    return this.http.delete<Playlist>(url, this.httpOptions).pipe(
-      tap(_ => this.log('deleted playlist id=${id}')),
+    return this.http.delete<Playlist>(url,
+      this.httpOptions).pipe(
+      tap(_ => console.log('deleted playlist id=${id}')),
       catchError(this.handleError<Playlist>('deletePlaylist'))
     );
   }
@@ -104,5 +116,5 @@ getPlaylist(id: number): Observable<Playlist> {
   private log(message: string) {
     this.messageService.add('PlaylistService: ${message}');
   }
-
+*/
 }

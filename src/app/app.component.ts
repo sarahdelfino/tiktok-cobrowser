@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { MatDialog } from '@angular/material';
+import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-root',
@@ -8,8 +9,10 @@ import { MatDialog } from '@angular/material';
 })
 export class AppComponent {
   title = 'tiktok-cobrowser';
+  
 
-  constructor() { }
+  constructor(private http: HttpClient) {}
+
 
 
   }

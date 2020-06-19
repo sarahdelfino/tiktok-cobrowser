@@ -1,12 +1,9 @@
 import { Video } from './video';
 
-export class Playlist {
+export interface Playlist {
 
-    constructor(
-        public id: number,
-        public name: string,
-        public video: Video,
-        public url?: string[],
-    ) { }
+        id: number;
+        name: string;
+        video: Video;
     
 }

@@ -26,4 +26,11 @@ export class ConfirmationDialogComponent {
     this.dialogRef.close();
   }
 
+  // delete(playlist: Playlist): void {
+  //   this.playlists = this.playlists.filter(p => p !== playlist);
+  //   this.playlistService.deletePlaylist(playlist.id).subscribe();
+  // }
+
+
+
 }

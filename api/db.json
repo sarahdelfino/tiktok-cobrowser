@@ -1,0 +1,43 @@
+{
+    "playlists": [
+        {
+            "id": 1,
+            "name": "playlist 1",
+            "video": {
+                "version": "",
+                "type": "",
+                "title": "gay",
+                "author_url": "https://www.tiktok.com/@scout2015/video/6718335390845095173",
+                "author_name": "",
+                "width": "",
+                "height": "",
+                "html": "",
+                "thumbnail_width": "",
+                "thumbnail_height": "",
+                "thumbnail_url": "",
+                "provider_url": "",
+                "provider_name": ""
+            }
+        },
+        {
+            "id": 2,
+            "name": "playlist 2",
+            "video": {
+                "version": "",
+                "type": "",
+                "title": "",
+                "author_url": "",
+                "author_name": "",
+                "width": "",
+                "height": "",
+                "html": "",
+                "thumbnail_width": "",
+                "thumbnail_height": "",
+                "thumbnail_url": "",
+                "provider_url": "",
+                "provider_name": ""
+            }
+            
+        }
+    ]
+}
