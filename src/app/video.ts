@@ -1,17 +1,24 @@
-export interface Video {
+import { BaseVideo } from './basevideo';
 
-        version: string;
-        type: string;
-        title: string;
-        author_url:  string;
-        author_name:  string;
-        width:  string;
-        height:  string;
-        html:  string;
-        thumbnail_width: string;
-        thumbnail_height: string;
-        thumbnail_url:  string;
-        provider_url: string;
-        provider_name: string;
-    
+export class Video implements BaseVideo {
+
+    id: number;
+    author_name:  string;
+    author_url:  string;
+    height:  string;
+    html:  string;
+    provider_name: string;
+    provider_url: string;
+    thumbnail_height: number;
+    thumbnail_url:  string;
+    thumbnail_width: number;
+    title: string;
+    type: string;
+    version: string;
+    width:  string;
+
+    constructor(video: BaseVideo) {
+        this.id = video.id;
+        this.title = video.title;
+    }
 }

@@ -16,21 +16,26 @@ export class VideosComponent implements OnInit {
   video: any = [];
 
 
-  constructor(private api: VideoService,
-    private sanitizer: DomSanitizer) { }
+  constructor(private videoService: VideoService) {
+    this.videoService.getVideo()
+    .subscribe((resp: Video[]) => {
+      console.log(resp);
+    });
+   }
 
+  /*
   getVideos() {
-    this.api.getVideo()
+    this.videoService.getVideo()
     .subscribe({
       //next: video => console.log(video.html),
       next: video => this.video = video,
       error: err => console.log(err),
     });
-    this.sanitizer.bypassSecurityTrustHtml(this.video.html);
     // this.sanitizer.bypassSecurityTrustScript(this.video.html);
   }
-
+*/
   ngOnInit() {
-    this.getVideos();
+
   }
+
 }

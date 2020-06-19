@@ -22,8 +22,9 @@ export class VideoService {
 
     // url = baseUrl + this.playlistUrl;
 
-  getVideo(): Observable<Video> {
-    return this.http.get<Video>(baseUrl);
+  getVideo(): Observable<Video[]> {
+    return this.http.get<Video[]>(baseUrl)
+    .pipe(map((video: Video[]) => video.map(video => new Video(video))));
   }
   
   
